@@ -9,10 +9,9 @@ RUN apk add --no-cache --virtual .build-deps \
     libtool \
     libxml2-dev \
     postgresql-dev \
-    sqlite-dev
-
-# Install production dependencies
-RUN apk add --no-cache \
+    sqlite-dev \
+    # Install production dependencies
+ && apk add --no-cache \
     bash \
     curl \
     g++ \
@@ -40,8 +39,8 @@ RUN yes | pecl install \
 # Install and enable php extensions
 RUN docker-php-ext-enable \
     imagick \
-    xdebug
-RUN docker-php-ext-configure zip --with-libzip
+#    xdebug \
+    && docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
     iconv \
@@ -56,4 +55,6 @@ RUN docker-php-ext-install \
     gd \
     zip \
     bcmath \
-    sockets
+    xdebug \
+    sockets \
+    && rm -rf /var/cache/apk/*
