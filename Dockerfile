@@ -1,11 +1,17 @@
-FROM php:7.3-fpm-alpine
+ARG PHP_BASE_IMAGE_VERSION
 
+FROM php:${PHP_BASE_IMAGE_VERSION}-fmp-alpine
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
     $PHPIZE_DEPS \
+    make \
+    g++ \
+    gcc \
     curl-dev \
     imagemagick-dev \
+    oniguruma-dev \
+    icu-dev \
     libtool \
     libxml2-dev \
     postgresql-dev \
@@ -14,17 +20,12 @@ RUN apk add --no-cache --virtual .build-deps \
  && apk add --no-cache \
     bash \
     curl \
-    g++ \
-    gcc \
     git \
     imagemagick \
+    icu \
     libc-dev \
     libpng-dev \
-    make \
     mysql-client \
-    nodejs \
-    nodejs-npm \
-    yarn \
     openssh-client \
     postgresql-libs \
     rsync \
@@ -39,8 +40,8 @@ RUN yes | pecl install \
 # Install and enable php extensions
 RUN docker-php-ext-enable \
     imagick \
-#    xdebug \
-    && docker-php-ext-configure zip --with-libzip
+    xdebug \
+    && docker-php-ext-configure zip
 RUN docker-php-ext-install \
     curl \
     iconv \
@@ -53,8 +54,11 @@ RUN docker-php-ext-install \
     tokenizer \
     xml \
     gd \
-    zip \
     bcmath \
-    xdebug \
     sockets \
+    intl \
+    && apk del \
+    .build-deps
+
+RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer \
     && rm -rf /var/cache/apk/*
