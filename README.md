@@ -44,3 +44,8 @@ xdebug
 zip
 
 ```
+
+
+### Example build
+
+`docker build -t exileed/php-testing:5.6 --build-arg PHP_BASE_IMAGE_VERSION=7.3 .`
