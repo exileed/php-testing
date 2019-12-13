@@ -1,6 +1,6 @@
 ARG PHP_BASE_IMAGE_VERSION
 
-FROM php:${PHP_BASE_IMAGE_VERSION}-fmp-alpine
+FROM php:${PHP_BASE_IMAGE_VERSION}-fpm-alpine
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
