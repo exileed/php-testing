@@ -7,7 +7,7 @@
 </p>
 
 **Stable** 
-[![pipeline status](https://gitlab.com/yiisoft/yii2-docker/badges/master/pipeline.svg)](https://gitlab.com/yiisoft/yii2-docker/commits/master)
+[![pipeline status](https://gitlab.com/exileed/php-testing/badges/master/pipeline.svg)](https://gitlab.com/exileed/php-testing/commits/master)
 
 
 ## About
