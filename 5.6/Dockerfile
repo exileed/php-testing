@@ -18,7 +18,7 @@ RUN apk add --no-cache --virtual .build-deps \
     postgresql-dev \
     sqlite-dev \
     zlib-dev \
-    libzip-dev
+    libzip-dev \
     # Install production dependencies
  && apk add --no-cache \
     bash \
