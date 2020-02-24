@@ -33,6 +33,7 @@ pdo_mysql
 pdo_pgsql
 pdo_sqlite
 pcntl
+redis
 tokenizer
 xml
 gd

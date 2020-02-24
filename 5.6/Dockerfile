@@ -11,9 +11,14 @@ RUN apk add --no-cache --virtual .build-deps \
     oniguruma-dev \
     icu-dev \
     libtool \
+    libc-dev \
+    libpng-dev \
+    libzstd-dev \
     libxml2-dev \
     postgresql-dev \
     sqlite-dev \
+    zlib-dev \
+    libzip-dev
     # Install production dependencies
  && apk add --no-cache \
     bash \
@@ -21,14 +26,9 @@ RUN apk add --no-cache --virtual .build-deps \
     git \
     imagemagick \
     icu \
-    libc-dev \
-    libpng-dev \
     mysql-client \
     openssh-client \
-    postgresql-libs \
-    rsync \
-    zlib-dev \
-    libzip-dev
+    postgresql-libs
 
 # Install PECL and PEAR extensions
 RUN yes | pecl install \
